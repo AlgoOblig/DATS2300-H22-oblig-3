@@ -1,2 +1,9 @@
-# DATS2300-H22-oblig-3
-dette er Oblig repo for algoritme og datastruktur på Oslomet
+# Obligatorisk oppgave 3 i Algoritmer og Datastrukturer
+
+Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
+Oppgaven er levert indivdualt:
+* Mohammed A. Mohammed, s375047, s375047@oslomet.no
+
+
+# Oppgavebeskrivelse
+
