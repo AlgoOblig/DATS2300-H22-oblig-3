@@ -65,22 +65,36 @@ public class SBinTre<T> {
         return antall;
     }
 
-    public String toStringPostOrder() {
-        if (tom()) return "[]";
 
-        StringJoiner s = new StringJoiner(", ", "[", "]");
-
-        Node<T> p = førstePostorden(rot); // går til den første i postorden
-        while (p != null) {
-            s.add(p.verdi.toString());
-            p = nestePostorden(p);
-        }
-
-        return s.toString();
-    }
 
     public boolean tom() {
         return antall == 0;
+    }
+
+
+
+    public int antall(T verdi) {
+
+
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        int antallForekomsterAvVerdi = 0;
+
+        if (inneholder(verdi)) {
+            Node<T> p = rot;
+
+            while(p != null) {
+                int cmp = comp.compare(verdi, p.verdi);
+
+                if (cmp < 0) {
+                    p = p.venstre;
+                }
+                else {
+                    p = p.høyre;
+                }
+            }
+        }
+        return antallForekomsterAvVerdi;
     }
 
     public final boolean leggInn(T verdi)    // skal ligge i class SBinTre
@@ -123,9 +137,6 @@ public class SBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-    public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
-    }
 
     public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
@@ -157,6 +168,35 @@ public class SBinTre<T> {
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
+    }
+
+
+    public String toStringPostOrder() {
+        if (tom()) return "[]";
+
+        StringJoiner s = new StringJoiner(", ", "[", "]");
+
+        Node<T> p = førstePostorden(rot); // går til den første i postorden
+        while (p != null) {
+            s.add(p.verdi.toString());
+            p = nestePostorden(p);
+        }
+
+        return s.toString();
+    }
+
+
+    public static void main(String[] args) {
+
+
+        Integer[] a = {4,7,2,9,4,10,8,7,4,6};
+        SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
+        for (int verdi : a) { tre.leggInn(verdi); }
+        System.out.println(tre.antall()); // Utskrift: 10
+        System.out.println(tre.antall(5)); // Utskrift: 0
+        System.out.println(tre.antall(4)); // Utskrift: 3
+        System.out.println(tre.antall(7)); // Utskrift: 2
+        System.out.println(tre.antall(10)); // Utskrift: 1
     }
 
 
