@@ -90,6 +90,10 @@ public class SBinTre<T> {
                     p = p.venstre;
                 }
                 else {
+
+                    if (cmp == 0) {
+                     antallForekomsterAvVerdi++;
+                     }
                     p = p.høyre;
                 }
             }
