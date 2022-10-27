@@ -1,9 +1,13 @@
 package no.oslomet.cs.algdat.Oblig3;
 
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Objects;
+import java.util.Queue;
 import java.util.StringJoiner;
 
 public class SBinTre<T> {
@@ -132,8 +136,13 @@ public class SBinTre<T> {
         return true;                             // vellykket innlegging
     }
 
-
-    public boolean fjern(T verdi) {
+    /***
+     * ta fra program kode 5.2.8.d
+     * @param verdi
+     * @return
+     */
+    public boolean fjern(T verdi)  // hører til klassen SBinTre
+    {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
@@ -142,17 +151,31 @@ public class SBinTre<T> {
     }
 
 
+    public String omvendtString() {
+        throw new UnsupportedOperationException("Ikke kodet ennå!");
+    }
+
+
+
     public void nullstill() {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
+
+    private void nullstill(Node<T> p) {
+        throw new UnsupportedOperationException("Ikke kodet ennå!");
+    }
+
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-    private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
-    }
+
+     private static <T> Node<T> nestePostorden(Node<T> p) {
+     throw new UnsupportedOperationException("Ikke kodet ennå!");
+     }
+
+
 
     public void postorden(Oppgave<? super T> oppgave) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
@@ -167,7 +190,30 @@ public class SBinTre<T> {
     }
 
     public ArrayList<T> serialize() {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+
+        Queue<Node<T>> queBeholder = new LinkedList<Node<T>>();
+        ArrayList<T> listeElementer = new ArrayList<>();
+
+
+        queBeholder.add(rot);
+
+        while (queBeholder.size()!=0) {
+
+            Node<T> forsteNod = queBeholder.remove();
+
+            listeElementer.add(forsteNod.verdi);
+
+            if (forsteNod.venstre != null) {
+                queBeholder.add(forsteNod.venstre);
+            }
+            if (forsteNod.høyre != null) {
+                queBeholder.add(forsteNod.høyre);
+            }
+        }
+
+        return listeElementer;
     }
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
@@ -183,7 +229,7 @@ public class SBinTre<T> {
         Node<T> p = førstePostorden(rot); // går til den første i postorden
         while (p != null) {
             s.add(p.verdi.toString());
-            p = nestePostorden(p);
+            p = nestePostorden(p); //nestePostOrden
         }
 
         return s.toString();
@@ -192,7 +238,7 @@ public class SBinTre<T> {
 
     public static void main(String[] args) {
 
-
+/**
         Integer[] a = {4,7,2,9,4,10,8,7,4,6};
         SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
         for (int verdi : a) { tre.leggInn(verdi); }
@@ -201,6 +247,22 @@ public class SBinTre<T> {
         System.out.println(tre.antall(4)); // Utskrift: 3
         System.out.println(tre.antall(7)); // Utskrift: 2
         System.out.println(tre.antall(10)); // Utskrift: 1
+
+ */
+
+
+//Lag et nytt binærtre
+SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
+int[] a = {10, 14, 6, 8, 1, 12, 7, 3, 11, 9, 13, 5, 2, 4};
+
+for (int verdi : a) {
+    tre.leggInn(verdi); }
+//Gjør om treet til et array
+ArrayList<Integer> data = tre.serialize();
+        System.out.println(tre.toStringPostOrder());
+
+// [1, 2, 6, 9, 10] [10, 9, 6, 2, 1]
+
     }
 
 
