@@ -37,7 +37,7 @@ public class SBinTre<T> {
 
     } // class Node
 
-    private Node<T> rot;                            // peker til rotnoden
+    private   Node<T> rot;                            // peker til rotnoden
     private int antall;                             // antall noder
     private int endringer;                          // antall endringer
 
@@ -65,7 +65,7 @@ public class SBinTre<T> {
         return false;
     }
 
-    public int antall() {
+    public  int antall() {
         return antall;
     }
 
@@ -214,14 +214,33 @@ public class SBinTre<T> {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
-
+/**
+ * oppgave 3
+ *
+ * */
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        Node<T> biTreNode = p;
+        while (true) {
+
+            if (biTreNode.venstre != null) biTreNode = biTreNode.venstre;
+            else if (biTreNode.høyre != null) biTreNode = biTreNode.høyre;
+            else return biTreNode;
+
+        }
     }
 
 
      private static <T> Node<T> nestePostorden(Node<T> p) {
-     throw new UnsupportedOperationException("Ikke kodet ennå!");
+         //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+         Node<T> biTreNode = p;
+
+         if (biTreNode.forelder.høyre == null)  return biTreNode.forelder;
+         else if (biTreNode.forelder.høyre.equals(biTreNode))   return biTreNode.forelder;
+         else return førstePostorden(biTreNode.forelder.høyre);
+
      }
 
 
