@@ -217,7 +217,16 @@ public class SBinTre<T> {
     }
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        SBinTre<K> treStack = new SBinTre<>(c);
+
+        for (K elementer : data) {
+
+            treStack.leggInn(elementer);
+        }
+
+        return treStack;
     }
 
 
