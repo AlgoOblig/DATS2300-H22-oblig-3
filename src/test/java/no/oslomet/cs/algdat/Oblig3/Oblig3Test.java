@@ -392,7 +392,7 @@ public class Oblig3Test {
             System.out.println("pekere i treet skal nulles!");
         }
         assertEquals(antallFeil, 0);
-    }  // slutt på Oppgave 5
+    }  // slutt på Oppgave 6
 
 
 } // Oblig3Test
