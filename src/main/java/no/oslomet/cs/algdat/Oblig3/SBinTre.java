@@ -187,7 +187,16 @@ public class SBinTre<T> {
     }
 
     public int fjernAlle(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        if(tom()||verdi == null) {return 0;}
+        int verdiSomFjernet= 0;
+
+        while(inneholder(verdi)) {
+            fjern(verdi);
+            verdiSomFjernet++;
+        }
+        return verdiSomFjernet;
     }
 
 
@@ -299,6 +308,15 @@ public class SBinTre<T> {
 
  */
 
+        int[] a = {4,7,2,9,4,10,8,7,4,6,1};
+        SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
+        for (int verdi : a) tre.leggInn(verdi);
+        System.out.println(tre.fjernAlle(4)); // 3
+        tre.fjernAlle(7); tre.fjern(8);
+        System.out.println(tre.antall()); // 5
+
+
+/**
 
 //Lag et nytt binærtre
 SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
@@ -314,5 +332,6 @@ ArrayList<Integer> data = tre.serialize();
 
     }
 
-
+*/
 } // ObligSBinTre
+}
