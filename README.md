@@ -7,3 +7,4 @@ Oppgaven er levert indivdualt:
 
 # Oppgavebeskrivelse
 
+oppgaven Oblig tre er interessant. oppgave kjøre som forventet og gi resultat.
