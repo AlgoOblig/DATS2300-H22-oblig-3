@@ -317,44 +317,5 @@ public class SBinTre<T> {
     }
 
 
-    public static void main(String[] args) {
 
-/**
-        Integer[] a = {4,7,2,9,4,10,8,7,4,6};
-        SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
-        for (int verdi : a) { tre.leggInn(verdi); }
-        System.out.println(tre.antall()); // Utskrift: 10
-        System.out.println(tre.antall(5)); // Utskrift: 0
-        System.out.println(tre.antall(4)); // Utskrift: 3
-        System.out.println(tre.antall(7)); // Utskrift: 2
-        System.out.println(tre.antall(10)); // Utskrift: 1
-
- */
-
-        int[] a = {4,7,2,9,4,10,8,7,4,6,1};
-        SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
-        for (int verdi : a) tre.leggInn(verdi);
-        System.out.println(tre.fjernAlle(4)); // 3
-        tre.fjernAlle(7); tre.fjern(8);
-        System.out.println(tre.antall()); // 5
-
-
-/**
-
-//Lag et nytt binærtre
-SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder());
-int[] a = {10, 14, 6, 8, 1, 12, 7, 3, 11, 9, 13, 5, 2, 4};
-
-for (int verdi : a) {
-    tre.leggInn(verdi); }
-//Gjør om treet til et array
-ArrayList<Integer> data = tre.serialize();
-        System.out.println(tre.toStringPostOrder());
-
-// [1, 2, 6, 9, 10] [10, 9, 6, 2, 1]
-
-    }
-
-*/
 } // ObligSBinTre
-}
