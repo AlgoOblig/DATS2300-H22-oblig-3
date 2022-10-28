@@ -235,6 +235,10 @@ public class SBinTre<T> {
      private static <T> Node<T> nestePostorden(Node<T> p) {
          //throw new UnsupportedOperationException("Ikke kodet ennå!");
 
+         if (p.forelder == null) {
+             return null;
+         }
+
          Node<T> biTreNode = p;
 
          if (biTreNode.forelder.høyre == null)  return biTreNode.forelder;
