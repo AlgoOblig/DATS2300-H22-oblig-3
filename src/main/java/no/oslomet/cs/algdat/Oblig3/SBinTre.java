@@ -76,7 +76,11 @@ public class SBinTre<T> {
     }
 
 
-
+    /**
+     * Oppgave 2
+     * @param verdi
+     * @return
+     */
     public int antall(T verdi) {
 
 
@@ -104,7 +108,13 @@ public class SBinTre<T> {
         }
         return antallForekomsterAvVerdi;
     }
+////////////////////////////////////////////////////////
 
+    /**
+     * Oppgave 2
+     * @param verdi
+     * @return
+     */
     public final boolean leggInn(T verdi)    // skal ligge i class SBinTre
     {
 
@@ -260,6 +270,11 @@ public class SBinTre<T> {
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
+
+    /**
+     * Oppgave 5
+     * @return
+     */
 
     public ArrayList<T> serialize() {
         //throw new UnsupportedOperationException("Ikke kodet ennå!");
